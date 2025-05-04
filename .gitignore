@@ -1,0 +1,32 @@
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# IDEs and editors
+.idea/
+.vscode/
+*.swp
+*~
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+build/
+dist/
+*.egg-info/
+pip-wheel-metadata/
+*.spec
+
+# Secrets
+*.key
+*.pem
+secrets.yml
+secrets.json
+
+# Logs
+*.log
