@@ -17,10 +17,11 @@ RUN pip install --no-cache-dir --upgrade pip && \
 # 5. Copiar el código de la aplicación
 COPY app.py .
 
-# 6. Exponer el puerto en el que corre la aplicación
-EXPOSE 8000
+# 6. Exponer el puerto (opcional para Cloud Run, pero buena práctica)
+# Cloud Run ignora EXPOSE y usa la variable PORT
+EXPOSE 8080
 
 # 7. Comando para ejecutar la aplicación
-# Cloud Run inyectará la variable de entorno PORT (usualmente 8080)
-# y mapeará ese puerto externo al puerto 8000 expuesto por el contenedor.
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
+# Usar la variable de entorno PORT proporcionada por Cloud Run
+# El script de shell 'sh -c' permite la sustitución de variables de entorno
+CMD ["sh", "-c", "uvicorn app:app --host 0.0.0.0 --port $PORT"]
